@@ -86,8 +86,22 @@
         \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
         \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
     \end{align*}
+\end{frame}
+
+\begin{frame}{The second incompleteness theorem}
+    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
     \bigskip
-    What's missing: Gödel's second incompleteness theorem.
+    We want just
+    \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
+
+    \bigskip
+    In PA we have:
+    \[ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
+
+    \bigskip
+
+    K4 cannot prove all the metamathematical statements we want.
+    Next part we'll see what we need to add.
 \end{frame}
 
 % ---------------------------------------------------------------- Part 2
@@ -96,16 +110,6 @@
 \begin{frame}
     \centering\Large Part 2\\[1ex] Provability logic\\[1ex]
     \normalsize Deciding any question about $\PA$ provability
-\end{frame}
-
-\begin{frame}{The second incompleteness theorem}
-    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
-    \bigskip
-    We want just
-    \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
-    because then
-    \[ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
-    $\PA$, if consistent, doesn't prove its own consistency.
 \end{frame}
 
 \begin{frame}{Löb's theorem}
