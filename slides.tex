@@ -31,14 +31,11 @@
 \end{frame}
 
 \begin{frame}{Necessity and possibility}
-    \[ \lnot\Box P \quad\equiv\quad \Diamond\lnot P \]
-    \bigskip
-
     $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
 
     Write $\Box A$ for $\Prov(\gn{A})$.
 
-    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$, ``$\PA$ doesn't refute $P$''.
+    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$
 \end{frame}
 
 \begin{frame}{Properties of the provability predicate}
@@ -49,7 +46,7 @@
     \begin{itemize}
         \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
         \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
-        \item \[ \PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})}) \]
+        \item $\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$
     \end{itemize}
 \end{frame}
 
