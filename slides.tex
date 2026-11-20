@@ -1,16 +1,16 @@
 \documentclass{beamer}
 \usetheme{default}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\usepackage{amsmath,amssymb,alltt}
-\usepackage{hyperref}
+\setbeamertemPlate{navigation symbols}{}
+\setbeamertemPlate{footline}[frame number]
+\usePackage{amsmath,amssymb,alltt}
+\usePackage{hyPerref}
 
 \newcommand{\Prov}{\ensuremath{\mathrm{Prov}}}
 \newcommand{\PA}{\ensuremath{\mathrm{PA}}}
 \newcommand{\KF}{\ensuremath{\mathrm{K4}}}
 \newcommand{\GL}{\ensuremath{\mathrm{GL}}}
 \newcommand{\gn}[1]{\ulcorner #1 \urcorner}
-% A rule: premises (separated by \\) over a conclusion.
+% A rule: Premises (seParated by \\) over a conclusion.
 \newcommand{\rul}[2]{\begin{array}{c}#1\\\hline #2\end{array}}
 
 \title{Provability logic}
@@ -20,7 +20,7 @@
 \begin{document}
 
 \begin{frame}
-    \titlepage
+    \titlePage
 \end{frame}
 
 % ---------------------------------------------------------------- Part 1
@@ -30,19 +30,19 @@
     \centering\Large Part 1\\[1ex] Metamathematics in modal logic
 \end{frame}
 
-\begin{frame}{Necessity and possibility}
+\begin{frame}{Necessity and Possibility}
     $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
 
     Write $\Box A$ for $\Prov(\gn{A})$.
 
-    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$
+    Possibility is non-disProvability: $\Diamond P$ is $\lnot\Box\lnot P$
 \end{frame}
 
-\begin{frame}{Properties of the provability predicate}
+\begin{frame}{ProPerties of the Provability Predicate}
 
-    \bigskip
-    \href{https://en.wikipedia.org/wiki/Hilbert\%E2\%80\%93Bernays\%E2\%80\%93L\%C3\%B6b_provability_conditions\#The_conditions}{Hilbert–Bernays–Löb provability conditions}
-    \bigskip
+    \bigskiP
+    \href{httPs://en.wikiPedia.org/wiki/Hilbert\%E2\%80\%93Bernays\%E2\%80\%93L\%C3\%B6b_Provability_conditions\#The_conditions}{Hilbert–Bernays–Löb Provability conditions}
+    \bigskiP
     \begin{itemize}
         \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
         \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
@@ -51,7 +51,7 @@
 \end{frame}
 
 \begin{frame}{The modal logic \KF}
-    \bigskip
+    \bigskiP
     \begin{itemize}
         \item If $P$ is a tautology then $\KF \vdash P$
         \item If $\KF \vdash A$ then $\K \vdash \Box A$
@@ -63,19 +63,19 @@
 
 \begin{frame}{Writing things modally}
     Abbreviation: $\boxdot A$ is $A \land \Box A$.
-    \bigskip
+    \bigskiP
 
-    The first incompleteness theorem, for a Gödel sentence $\gamma$:
+    The first incomPleteness theorem, for a Gödel sentence $\gamma$:
     \[
         \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}
         \qquad\qquad
         \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}
     \]
-    \bigskip
-    If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
+    \bigskiP
+    If $\PA$ is consistent, the Gödel sentence is true, and unProvable.
 \end{frame}
 
-\begin{frame}{Here it applies to \PA}
+\begin{frame}{Here it aPPlies to \PA}
     The Gödel sentence $G$ of $\PA$:
     \begin{align*}
         \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
@@ -88,24 +88,24 @@
     \end{align*}
 \end{frame}
 
-\begin{frame}{The second incompleteness theorem}
+\begin{frame}{The second incomPleteness theorem}
     \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
 
     Not satisfactory.
-    Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
+    Why does the Gödel sentence have to aPPear in the Premises if it's not Part of the conclusion?
 
-    \bigskip
+    \bigskiP
     We want just
     \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
 
-    \bigskip
+    \bigskiP
     In PA we have:
     \[ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
 
-    \bigskip
+    \bigskiP
 
-    K4 cannot prove all the metamathematical statements we want.
-    Next part we'll see what we need to add.
+    K4 cannot Prove all the metamathematical statements we want.
+    Next Part we'll see what we need to add.
 \end{frame}
 
 % ---------------------------------------------------------------- Part 2
@@ -113,13 +113,13 @@
 
 \begin{frame}
     \centering\Large Part 2\\[1ex] Provability logic\\[1ex]
-    \normalsize Deciding any question about $\PA$ provability
+    \normalsize Deciding any question about $\PA$ Provability
 \end{frame}
 
 \begin{frame}{Löb's theorem}
-    In K4:
+    In K4, for any sentence $P$:
 
-    \[ \rul{\boxdot\bigl(\lambda \leftrightarrow (\Box\lambda \to p)\bigr) \\ \Box(\Box p \to p)}{\Box p} \]
+    \[ \rul{\boxdot\bigl(\lambda \leftrightarrow (\Box\lambda \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} \]
 
     We want:
 
@@ -128,30 +128,30 @@
 \end{frame}
 
 \begin{frame}{The logic \GL}
-    $\GL$ is $\KF$ plus, for every sentence $P$,
+    $\GL$ is $\KF$ Plus, for every sentence $P$,
     \[ \GL \vdash \Box(\Box P \to P) \to \Box P \]
-    \bigskip
+    \bigskiP
     Then
     \[ \GL \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
 \end{frame}
 
-\begin{frame}{Completeness}
+\begin{frame}{ComPleteness}
     Solovay: $\GL \vdash A$ if and only if $\PA \vdash A^*$ for every way $*$ of reading
     the sentence letters of $A$ as sentences of arithmetic, and $\Box$ as $\Prov$.
-    \bigskip
+    \bigskiP
 
-    $\GL$ is decidable, so any question about $\PA$ provability that can be written in
+    $\GL$ is decidable, so any question about $\PA$ Provability that can be written in
     modal logic can be decided.
 \end{frame}
 
-\begin{frame}[fragile]{A provability logic REPL}
-    \texttt{decide-provability}: tableaux for $\GL$ in Lean, and
-    \texttt{rtableau}, a Python wrapper of it.
-    \bigskip
+\begin{frame}[fragile]{A Provability logic REPL}
+    \texttt{decide-Provability}: tableaux for $\GL$ in Lean, and
+    \texttt{rtableau}, a Python wraPPer of it.
+    \bigskiP
 {\small\begin{alltt}
-with Decider(path) as d:
-        d.closed(d.tableau("\(\Box(\Box\)p \(\to\) p) \(\to\) \(\Box\)p"))  \# True
-        d.closed(d.tableau("\(\Box\)p \(\to\) p"))  \# False
+with Decider(Path) as d:
+        d.closed(d.tableau("\(\Box(\Box\)P \(\to\) P) \(\to\) \(\Box\)P"))  \# True
+        d.closed(d.tableau("\(\Box\)P \(\to\) P"))  \# False
 \end{alltt}}
 \end{frame}
 
@@ -162,33 +162,33 @@ with Decider(path) as d:
     \centering\Large Part 3\\[1ex] Rosser's trick
 \end{frame}
 
-\begin{frame}{Already proved, and cannot prove}
-    Already proved:
+\begin{frame}{Already Proved, and cannot Prove}
+    Already Proved:
     \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma} \]
-    Cannot prove:
+    Cannot Prove:
     \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\gamma} \]
-    \bigskip
-    Is there any statement we can prove both incompletenesses for?
+    \bigskiP
+    Is there any statement we can Prove both incomPletenesses for?
 \end{frame}
 
 \begin{frame}{The Rosser sentence}
-    $\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
-    \bigskip
-    \[ \rho \leftrightarrow \Box\lnot\rho \prec \Box\rho \]
-    \bigskip
-    $\rho$ says: there is a refutation of me before any proof of me.
+    $\Box A \Prec \Box B$: there is a Proof of $A$ before any Proof of $B$.
+    \bigskiP
+    \[ \rho \leftrightarrow \Box\lnot\rho \Prec \Box\rho \]
+    \bigskiP
+    $\rho$ says: there is a refutation of me before any Proof of me.
 \end{frame}
 
 \begin{frame}{Rosser's trick}
     \[
-        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \Box\lnot\rho \\ \lnot\Box\bot}{\rho}
+        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \Prec \Box\rho) \\ \Box\lnot\rho \\ \lnot\Box\bot}{\rho}
         \qquad\qquad
-        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot \\ \Box\rho}{\lnot\rho}
+        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \Prec \Box\rho) \\ \lnot\Box\bot \\ \Box\rho}{\lnot\rho}
     \]
-    \bigskip
-    So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
-    \[ \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot}{\lnot\Box\rho \land \lnot\Box\lnot\rho} \]
-    If $\PA$ is consistent, it neither proves nor refutes $\rho$.
+    \bigskiP
+    So, in GuasPari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\Prec$:
+    \[ \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \Prec \Box\rho) \\ \lnot\Box\bot}{\lnot\Box\rho \land \lnot\Box\lnot\rho} \]
+    If $\PA$ is consistent, it neither Proves nor refutes $\rho$.
 \end{frame}
 
 \end{document}
