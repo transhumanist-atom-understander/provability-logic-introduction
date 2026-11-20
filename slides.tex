@@ -65,11 +65,11 @@
     Abbreviation: $\boxdot A$ is $A \land \Box A$.
     \bigskip
 
-    The first incompleteness theorem, for a Gödel sentence $q$:
+    The first incompleteness theorem, for a Gödel sentence $\gamma$:
     \[
-        \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{q}
+        \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}
         \qquad\qquad
-        \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q}
+        \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}
     \]
     \bigskip
     If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
@@ -81,7 +81,7 @@
         \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
         \PA &\vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
     \end{align*}
-    That is $\boxdot(q \leftrightarrow \lnot\Box q)$, with $G$ for $q$. So
+    That is $\boxdot(\gamma \leftrightarrow \lnot\Box\gamma)$, with $G$ for $\gamma$. So
     \begin{align*}
         \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
         \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
@@ -89,7 +89,7 @@
 \end{frame}
 
 \begin{frame}{The second incompleteness theorem}
-    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
+    \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
     \bigskip
     We want just
     \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
@@ -113,11 +113,11 @@
 \end{frame}
 
 \begin{frame}{Löb's theorem}
-    For a Löb sentence $L$:
-    \[ \rul{\boxdot\bigl(L \leftrightarrow (\Box L \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} \]
+    For a Löb sentence $\lambda$:
+    \[ \rul{\boxdot\bigl(\lambda \leftrightarrow (\Box\lambda \to p)\bigr) \\ \Box(\Box p \to p)}{\Box p} \]
     \bigskip
     And since the Löb sentence exists:
-    \[ \rul{\Box(\Box P \to P)}{\Box P} \]
+    \[ \rul{\Box(\Box p \to p)}{\Box p} \]
 \end{frame}
 
 \begin{frame}{The logic \GL}
@@ -157,9 +157,9 @@ with Decider(path) as d:
 
 \begin{frame}{Already proved, and cannot prove}
     Already proved:
-    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q} \]
+    \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma} \]
     Cannot prove:
-    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot q} \]
+    \[ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\gamma} \]
     \bigskip
     Is there any statement we can prove both incompletenesses for?
 \end{frame}
@@ -167,21 +167,21 @@ with Decider(path) as d:
 \begin{frame}{The Rosser sentence}
     $\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
     \bigskip
-    \[ R \leftrightarrow \Box\lnot R \prec \Box R \]
+    \[ \rho \leftrightarrow \Box\lnot\rho \prec \Box\rho \]
     \bigskip
-    $R$ says: there is a refutation of me before any proof of me.
+    $\rho$ says: there is a refutation of me before any proof of me.
 \end{frame}
 
 \begin{frame}{Rosser's trick}
     \[
-        \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \Box\lnot R \\ \lnot\Box\bot}{R}
+        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \Box\lnot\rho \\ \lnot\Box\bot}{\rho}
         \qquad\qquad
-        \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot \\ \Box R}{\lnot R}
+        \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot \\ \Box\rho}{\lnot\rho}
     \]
     \bigskip
     So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
-    \[ \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot}{\lnot\Box R \land \lnot\Box\lnot R} \]
-    If $\PA$ is consistent, it neither proves nor refutes $R$.
+    \[ \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot}{\lnot\Box\rho \land \lnot\Box\lnot\rho} \]
+    If $\PA$ is consistent, it neither proves nor refutes $\rho$.
 \end{frame}
 
 \end{document}
