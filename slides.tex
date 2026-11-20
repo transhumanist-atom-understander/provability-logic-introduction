@@ -117,15 +117,17 @@
 \end{frame}
 
 \begin{frame}{Löb's theorem}
-    For a Löb sentence $L$:
+    In K4:
+
     \[ \rul{\boxdot\bigl(L \leftrightarrow (\Box L \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} \]
-    \bigskip
-    And since the Löb sentence exists:
+
+    We want:
+
     \[ \rul{\Box(\Box P \to P)}{\Box P} \]
 \end{frame}
 
 \begin{frame}{The logic \GL}
-    Add it as an axiom: $\GL$ is $\KF$ plus
+    $\GL$ is $\KF$ plus, for every sentence $P$,
     \[ \GL \vdash \Box(\Box P \to P) \to \Box P \]
     \bigskip
     Then
