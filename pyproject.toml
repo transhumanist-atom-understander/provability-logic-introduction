@@ -1,0 +1,12 @@
+[project]
+name = "provability-logic-introduction"
+version = "0.1.0"
+description = "Slides introducing provability logic, and a check of their GL and R⁻ claims"
+requires-python = ">=3.13"
+dependencies = ["rtableau"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+rtableau = { git = "https://github.com/transhumanist-atom-understander/wrap-provability", branch = "main" }

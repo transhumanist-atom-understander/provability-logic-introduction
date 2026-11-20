@@ -1,0 +1,13 @@
+.venv
+uv.lock
+__pycache__/
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.fls
+*.fdb_latexmk
+*.vrb
+slides.pdf
