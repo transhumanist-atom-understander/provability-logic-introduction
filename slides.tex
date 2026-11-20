@@ -33,14 +33,15 @@
 \begin{frame}{Necessity and possibility}
     \[ \lnot\Box P \quad\equiv\quad \Diamond\lnot P \]
     \bigskip
-    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$, ``$\PA$ doesn't refute $P$''.
-    \bigskip
 
-    $\lnot\Box\bot$, ``$\PA$ doesn't prove $\bot$'', says that $\PA$ is consistent.
+    $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+
+    Write $\Box A$ for $\Prov(\gn{A})$.
+
+    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$, ``$\PA$ doesn't refute $P$''.
 \end{frame}
 
-\begin{frame}{The provability predicate}
-    $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+\begin{frame}{Properties of the provability predicate}
 
     \bigskip
     \href{https://en.wikipedia.org/wiki/Hilbert\%E2\%80\%93Bernays\%E2\%80\%93L\%C3\%B6b_provability_conditions\#The_conditions}{Hilbert–Bernays–Löb provability conditions}
@@ -53,11 +54,10 @@
 \end{frame}
 
 \begin{frame}{The modal logic \KF}
-    Write $\Box A$ for $\Prov(\gn{A})$.
     \bigskip
     \begin{itemize}
         \item If $P$ is a tautology then $\KF \vdash P$
-        \item Necessitation: if $\KF \vdash A$ then $\K \vdash \Box A$
+        \item If $\KF \vdash A$ then $\K \vdash \Box A$
         \item $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
         \item \[ \KF \vdash \Box A \to \Box\Box A \]
     \end{itemize}
