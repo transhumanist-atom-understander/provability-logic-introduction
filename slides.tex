@@ -3,10 +3,10 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
 \usepackage{amsmath,amssymb,alltt}
+\usepackage{hyperref}
 
 \newcommand{\Prov}{\ensuremath{\mathrm{Prov}}}
 \newcommand{\PA}{\ensuremath{\mathrm{PA}}}
-\newcommand{\K}{\ensuremath{\mathrm{K}}}
 \newcommand{\KF}{\ensuremath{\mathrm{K4}}}
 \newcommand{\GL}{\ensuremath{\mathrm{GL}}}
 \newcommand{\gn}[1]{\ulcorner #1 \urcorner}
@@ -30,34 +30,6 @@
   \centering\Large Part 1\\[1ex] Metamathematics in modal logic
 \end{frame}
 
-\begin{frame}{The provability predicate}
-  $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
-  \bigskip
-  \begin{itemize}
-    \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
-    \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{The modal logic \K}
-  Write $\Box A$ for $\Prov(\gn{A})$.
-  \bigskip
-  \begin{itemize}
-    \item If $P$ is a tautology then $\K \vdash P$
-    \item Necessitation: if $\K \vdash A$ then $\K \vdash \Box A$
-    \item $\K \vdash \Box(A \to B) \to (\Box A \to \Box B)$
-  \end{itemize}
-  \bigskip
-  These are the two conditions on $\Prov$, in modal notation.
-\end{frame}
-
-\begin{frame}{One more condition}
-  \[ \PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})}) \]
-  \bigskip
-  Axiom 4:
-  \[ \KF \vdash \Box A \to \Box\Box A \]
-\end{frame}
-
 \begin{frame}{Necessity and possibility}
   \[ \lnot\Box P \quad\equiv\quad \Diamond\lnot P \]
   \bigskip
@@ -66,6 +38,33 @@
 
   $\lnot\Box\bot$, ``$\PA$ doesn't prove $\bot$'', says that $\PA$ is consistent.
 \end{frame}
+
+\begin{frame}{The provability predicate}
+  $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+
+  \bigskip
+
+  \href{https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions}{Hilbert–Bernays–Löb provability conditions}
+  \bigskip
+  \begin{itemize}
+    \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
+    \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
+    \item \[ \PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})}) \]
+\end{frame}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The modal logic \KF}
+  Write $\Box A$ for $\Prov(\gn{A})$.
+  \bigskip
+  \begin{itemize}
+    \item If $P$ is a tautology then $\KF \vdash P$
+    \item Necessitation: if $\KF \vdash A$ then $\K \vdash \Box A$
+    \item $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
+    \item \[ \KF \vdash \Box A \to \Box\Box A \]
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}{Writing things modally}
   Abbreviation: $\boxdot A$ is $A \land \Box A$.
