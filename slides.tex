@@ -20,131 +20,131 @@
 \begin{document}
 
 \begin{frame}
-  \titlepage
+    \titlepage
 \end{frame}
 
 % ---------------------------------------------------------------- Part 1
 \section{Metamathematics in modal logic}
 
 \begin{frame}
-  \centering\Large Part 1\\[1ex] Metamathematics in modal logic
+    \centering\Large Part 1\\[1ex] Metamathematics in modal logic
 \end{frame}
 
 \begin{frame}{Necessity and possibility}
-  \[ \lnot\Box P \quad\equiv\quad \Diamond\lnot P \]
-  \bigskip
-  Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$, ``$\PA$ doesn't refute $P$''.
-  \bigskip
+    \[ \lnot\Box P \quad\equiv\quad \Diamond\lnot P \]
+    \bigskip
+    Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$, ``$\PA$ doesn't refute $P$''.
+    \bigskip
 
-  $\lnot\Box\bot$, ``$\PA$ doesn't prove $\bot$'', says that $\PA$ is consistent.
+    $\lnot\Box\bot$, ``$\PA$ doesn't prove $\bot$'', says that $\PA$ is consistent.
 \end{frame}
 
 \begin{frame}{The provability predicate}
-  $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+    $\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
 
-  \bigskip
+    \bigskip
 
-  \href{https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions}{Hilbert–Bernays–Löb provability conditions}
-  \bigskip
-  \begin{itemize}
-    \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
-    \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
-    \item \[ \PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})}) \]
-  \end{itemize}
+    \href{https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions}{Hilbert–Bernays–Löb provability conditions}
+    \bigskip
+    \begin{itemize}
+        \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
+        \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
+        \item \[ \PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})}) \]
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{The modal logic \KF}
-  Write $\Box A$ for $\Prov(\gn{A})$.
-  \bigskip
-  \begin{itemize}
-    \item If $P$ is a tautology then $\KF \vdash P$
-    \item Necessitation: if $\KF \vdash A$ then $\K \vdash \Box A$
-    \item $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
-    \item \[ \KF \vdash \Box A \to \Box\Box A \]
-  \end{itemize}
+    Write $\Box A$ for $\Prov(\gn{A})$.
+    \bigskip
+    \begin{itemize}
+        \item If $P$ is a tautology then $\KF \vdash P$
+        \item Necessitation: if $\KF \vdash A$ then $\K \vdash \Box A$
+        \item $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
+        \item \[ \KF \vdash \Box A \to \Box\Box A \]
+    \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Writing things modally}
-  Abbreviation: $\boxdot A$ is $A \land \Box A$.
-  \bigskip
+    Abbreviation: $\boxdot A$ is $A \land \Box A$.
+    \bigskip
 
-  The first incompleteness theorem, for a Gödel sentence $q$:
-  \[
-    \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{q}
-    \qquad\qquad
-    \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q}
-  \]
-  \bigskip
-  If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
+    The first incompleteness theorem, for a Gödel sentence $q$:
+    \[
+        \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{q}
+        \qquad\qquad
+        \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q}
+    \]
+    \bigskip
+    If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
 \end{frame}
 
 \begin{frame}{Here it applies to \PA}
-  The Gödel sentence $G$ of $\PA$:
-  \begin{align*}
-    \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
-    \PA &\vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
-  \end{align*}
-  That is $\boxdot(q \leftrightarrow \lnot\Box q)$, with $G$ for $q$. So
-  \begin{align*}
-    \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
-    \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
-  \end{align*}
-  \bigskip
-  What's missing: Gödel's second incompleteness theorem.
+    The Gödel sentence $G$ of $\PA$:
+    \begin{align*}
+        \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
+        \PA &\vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
+    \end{align*}
+    That is $\boxdot(q \leftrightarrow \lnot\Box q)$, with $G$ for $q$. So
+    \begin{align*}
+        \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
+        \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
+    \end{align*}
+    \bigskip
+    What's missing: Gödel's second incompleteness theorem.
 \end{frame}
 
 % ---------------------------------------------------------------- Part 2
 \section{Provability logic}
 
 \begin{frame}
-  \centering\Large Part 2\\[1ex] Provability logic\\[1ex]
-  \normalsize Deciding any question about $\PA$ provability
+    \centering\Large Part 2\\[1ex] Provability logic\\[1ex]
+    \normalsize Deciding any question about $\PA$ provability
 \end{frame}
 
 \begin{frame}{The second incompleteness theorem}
-  \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
-  \bigskip
-  We want just
-  \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
-  because then
-  \[ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
-  $\PA$, if consistent, doesn't prove its own consistency.
+    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
+    \bigskip
+    We want just
+    \[ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} \]
+    because then
+    \[ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
+    $\PA$, if consistent, doesn't prove its own consistency.
 \end{frame}
 
 \begin{frame}{Löb's theorem}
-  For a Löb sentence $L$:
-  \[ \rul{\boxdot\bigl(L \leftrightarrow (\Box L \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} \]
-  \bigskip
-  And since the Löb sentence exists:
-  \[ \rul{\Box(\Box P \to P)}{\Box P} \]
+    For a Löb sentence $L$:
+    \[ \rul{\boxdot\bigl(L \leftrightarrow (\Box L \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} \]
+    \bigskip
+    And since the Löb sentence exists:
+    \[ \rul{\Box(\Box P \to P)}{\Box P} \]
 \end{frame}
 
 \begin{frame}{The logic \GL}
-  Add it as an axiom: $\GL$ is $\KF$ plus
-  \[ \GL \vdash \Box(\Box P \to P) \to \Box P \]
-  \bigskip
-  Then
-  \[ \GL \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
+    Add it as an axiom: $\GL$ is $\KF$ plus
+    \[ \GL \vdash \Box(\Box P \to P) \to \Box P \]
+    \bigskip
+    Then
+    \[ \GL \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot \]
 \end{frame}
 
 \begin{frame}{Completeness}
-  Solovay: $\GL \vdash A$ if and only if $\PA \vdash A^*$ for every way $*$ of reading
-  the sentence letters of $A$ as sentences of arithmetic, and $\Box$ as $\Prov$.
-  \bigskip
+    Solovay: $\GL \vdash A$ if and only if $\PA \vdash A^*$ for every way $*$ of reading
+    the sentence letters of $A$ as sentences of arithmetic, and $\Box$ as $\Prov$.
+    \bigskip
 
-  $\GL$ is decidable, so any question about $\PA$ provability that can be written in
-  modal logic can be decided.
+    $\GL$ is decidable, so any question about $\PA$ provability that can be written in
+    modal logic can be decided.
 \end{frame}
 
 \begin{frame}[fragile]{A provability logic REPL}
-  \texttt{decide-provability}: tableaux for $\GL$ in Lean, and
-  \texttt{rtableau}, a Python wrapper of it.
-  \bigskip
+    \texttt{decide-provability}: tableaux for $\GL$ in Lean, and
+    \texttt{rtableau}, a Python wrapper of it.
+    \bigskip
 {\small\begin{alltt}
 with Decider(path) as d:
-    d.closed(d.tableau("\(\Box(\Box\)p \(\to\) p) \(\to\) \(\Box\)p"))  \# True
-    d.closed(d.tableau("\(\Box\)p \(\to\) p"))  \# False
+        d.closed(d.tableau("\(\Box(\Box\)p \(\to\) p) \(\to\) \(\Box\)p"))  \# True
+        d.closed(d.tableau("\(\Box\)p \(\to\) p"))  \# False
 \end{alltt}}
 \end{frame}
 
@@ -152,36 +152,36 @@ with Decider(path) as d:
 \section{Rosser's trick}
 
 \begin{frame}
-  \centering\Large Part 3\\[1ex] Rosser's trick
+    \centering\Large Part 3\\[1ex] Rosser's trick
 \end{frame}
 
 \begin{frame}{Already proved, and cannot prove}
-  Already proved:
-  \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q} \]
-  Cannot prove:
-  \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot q} \]
-  \bigskip
-  Is there any statement we can prove both incompletenesses for?
+    Already proved:
+    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box q} \]
+    Cannot prove:
+    \[ \rul{\boxdot(q \leftrightarrow \lnot\Box q) \\ \lnot\Box\bot}{\lnot\Box\lnot q} \]
+    \bigskip
+    Is there any statement we can prove both incompletenesses for?
 \end{frame}
 
 \begin{frame}{The Rosser sentence}
-  $\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
-  \bigskip
-  \[ R \leftrightarrow \Box\lnot R \prec \Box R \]
-  \bigskip
-  $R$ says: there is a refutation of me before any proof of me.
+    $\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
+    \bigskip
+    \[ R \leftrightarrow \Box\lnot R \prec \Box R \]
+    \bigskip
+    $R$ says: there is a refutation of me before any proof of me.
 \end{frame}
 
 \begin{frame}{Rosser's trick}
-  \[
-    \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \Box\lnot R \\ \lnot\Box\bot}{R}
-    \qquad\qquad
-    \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot \\ \Box R}{\lnot R}
-  \]
-  \bigskip
-  So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
-  \[ \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot}{\lnot\Box R \land \lnot\Box\lnot R} \]
-  If $\PA$ is consistent, it neither proves nor refutes $R$.
+    \[
+        \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \Box\lnot R \\ \lnot\Box\bot}{R}
+        \qquad\qquad
+        \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot \\ \Box R}{\lnot R}
+    \]
+    \bigskip
+    So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
+    \[ \rul{\boxdot(R \leftrightarrow \Box\lnot R \prec \Box R) \\ \lnot\Box\bot}{\lnot\Box R \land \lnot\Box\lnot R} \]
+    If $\PA$ is consistent, it neither proves nor refutes $R$.
 \end{frame}
 
 \end{document}
