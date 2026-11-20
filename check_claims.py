@@ -2,14 +2,14 @@ import os
 
 from rtableau import Decider
 
-GODEL = "⊡(G ↔ ¬□G)"
-ROSSER = "⊡(R ↔ □¬R ≺ □R)"
+GODEL = "⊡(γ ↔ ¬□γ)"
+ROSSER = "⊡(ρ ↔ □¬ρ ≺ □ρ)"
 
 # (sentence, whether it is claimed to be a theorem)
 CLAIMS = [
     ("¬□⊥ → ¬□¬□⊥", True),
-    (f"({GODEL} ∧ ¬□⊥) → ¬□¬G", False),
-    (f"({ROSSER} ∧ ¬□⊥) → ¬□R ∧ ¬□¬R", True)
+    (f"({GODEL} ∧ ¬□⊥) → ¬□¬γ", False),
+    (f"({ROSSER} ∧ ¬□⊥) → ¬□ρ ∧ ¬□¬ρ", True)
 ]
 
 project = os.environ.get("DECIDE_PROVABILITY")
