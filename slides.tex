@@ -45,8 +45,11 @@
     \bigskiP
     \begin{itemize}
         \item If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$
-        \item $\PA \vdash \Prov(\gn{A \to B}) \to \bigl(\Prov(\gn{A}) \to \Prov(\gn{B})\bigr)$
+            Can Godel code the proof
+        \item $\PA \vdash  (\Prov(\gn{A}) \land \Prov(\gn{A \to B})) \to \Prov(\gn{B})$
+            Can do modus ponens in proofs: concatenate the $A$ code with the $A \to B$ code and do modus ponens
         \item $\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$
+            Represents the first rule in the system
     \end{itemize}
 \end{frame}
 
