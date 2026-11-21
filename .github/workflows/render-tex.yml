@@ -1,0 +1,36 @@
+name: Render slides.tex
+
+on:
+  push:
+    branches: [main]
+    paths: [slides.qmd, preamble.tex, .github/workflows/render-tex.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.11.9
+          tinytex: false
+
+      # output-ext:tex stops after Pandoc: no PDF, and no LaTeX needed.
+      - run: quarto render slides.qmd --to beamer -M output-ext:tex
+
+      - name: Commit slides.tex if it changed
+        run: |
+          git add slides.tex
+          if git diff --cached --quiet; then
+            echo "slides.tex unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Render slides.tex from slides.qmd"
+          git push

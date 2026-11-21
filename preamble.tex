@@ -1,0 +1,13 @@
+% Undo the paragraph spacing of Pandoc's template, to match plain beamer.
+\setlength{\parskip}{0pt}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usepackage{amsmath,amssymb,alltt}
+
+\newcommand{\Prov}{\ensuremath{\mathrm{Prov}}}
+\newcommand{\PA}{\ensuremath{\mathrm{PA}}}
+\newcommand{\KF}{\ensuremath{\mathrm{K4}}}
+\newcommand{\GL}{\ensuremath{\mathrm{GL}}}
+\newcommand{\gn}[1]{\ulcorner #1 \urcorner}
+% A rule: premises (separated by \\) over a conclusion.
+\newcommand{\rul}[2]{\begin{array}{c}#1\\\hline #2\end{array}}

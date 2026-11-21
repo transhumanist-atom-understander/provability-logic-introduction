@@ -1,0 +1,202 @@
+---
+title: Provability logic
+subtitle: An introduction
+format:
+  beamer:
+    theme: default
+    section-titles: false
+    keep-tex: true
+    pdf-engine: pdflatex
+    include-in-header: preamble.tex
+---
+
+# Metamathematics in modal logic
+
+##
+
+```{=latex}
+\centering\Large Part 1\\[1ex] Metamathematics in modal logic
+```
+
+## Necessity and possibility
+
+$\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+
+Write $\Box A$ for $\Prov(\gn{A})$.
+
+Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$
+
+## Properties of the provability predicate
+
+\bigskip
+
+[Hilbert–Bernays–Löb provability conditions](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions)
+
+\bigskip
+
+- If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$ \
+  Can Godel code the proof
+- $\PA \vdash  (\Prov(\gn{A}) \land \Prov(\gn{A \to B})) \to \Prov(\gn{B})$ \
+  Can do modus ponens in proofs: concatenate the $A$ code with the $A \to B$ code and do modus ponens
+- $\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$ \
+  Represents the first rule in the system
+
+## The modal logic $\KF$
+
+\bigskip
+
+- If $P$ is a tautology then $\KF \vdash P$
+- If $\KF \vdash A$ then $\KF \vdash \Box A$
+- $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
+- $\KF \vdash \Box A \to \Box\Box A$
+
+## Writing things modally
+
+Abbreviation: $\boxdot A$ is $A \land \Box A$.
+
+\bigskip
+
+The first incompleteness theorem, for a Gödel sentence $\gamma$:
+$$
+    \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}
+    \qquad\qquad
+    \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}
+$$
+
+\bigskip
+
+If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
+
+## Here it applies to $\PA$
+
+The Gödel sentence $G$ of $\PA$:
+\begin{align*}
+    \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
+    \PA &\vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
+\end{align*}
+That is $\boxdot(\gamma \leftrightarrow \lnot\Box\gamma)$, with $G$ for $\gamma$. So
+\begin{align*}
+    \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
+    \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
+\end{align*}
+
+## The second incompleteness theorem
+
+$$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
+
+Not satisfactory.
+Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
+
+\bigskip
+
+We want just
+$$ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
+
+\bigskip
+
+In PA we have:
+$$ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
+
+\bigskip
+
+K4 cannot prove all the metamathematical statements we want.
+Next part we'll see what we need to add.
+
+# Provability logic
+
+##
+
+```{=latex}
+\centering\Large Part 2\\[1ex] Provability logic\\[1ex]
+\normalsize Deciding any question about $\PA$ provability
+```
+
+## Löb's theorem
+
+In K4, for any sentence $P$:
+
+$$ \rul{\boxdot\bigl(\lambda \leftrightarrow (\Box\lambda \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} $$
+
+We want:
+
+$$ \rul{\Box(\Box P \to P)}{\Box P} $$
+
+## The logic $\GL$
+
+$\GL$ is $\KF$ plus, for every sentence $P$,
+$$ \GL \vdash \Box(\Box P \to P) \to \Box P $$
+
+\bigskip
+
+Then
+$$ \GL \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
+
+## Completeness
+
+Solovay: $\GL \vdash A$ if and only if $\PA \vdash A^*$ for every way $*$ of reading
+the sentence letters of $A$ as sentences of arithmetic, and $\Box$ as $\Prov$.
+
+\bigskip
+
+$\GL$ is decidable, so any question about $\PA$ provability that can be written in
+modal logic can be decided.
+
+## A provability logic REPL {.fragile}
+
+`decide-provability`: tableaux for $\GL$ in Lean, and
+`rtableau`, a Python wrapper of it.
+
+\bigskip
+
+```{=latex}
+{\small\begin{alltt}
+with Decider(path) as d:
+        d.closed(d.tableau("\(\Box(\Box\)p \(\to\) p) \(\to\) \(\Box\)p"))  \# True
+        d.closed(d.tableau("\(\Box\)p \(\to\) p"))  \# False
+\end{alltt}}
+```
+
+# Rosser's trick
+
+##
+
+```{=latex}
+\centering\Large Part 3\\[1ex] Rosser's trick
+```
+
+## Already proved, and cannot prove
+
+Already proved:
+$$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma} $$
+Cannot prove:
+$$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\gamma} $$
+
+\bigskip
+
+Is there any statement we can prove both incompletenesses for?
+
+## The Rosser sentence
+
+$\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
+
+\bigskip
+
+$$ \rho \leftrightarrow \Box\lnot\rho \prec \Box\rho $$
+
+\bigskip
+
+$\rho$ says: there is a refutation of me before any proof of me.
+
+## Rosser's trick
+
+$$
+    \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \Box\lnot\rho \\ \lnot\Box\bot}{\rho}
+    \qquad\qquad
+    \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot \\ \Box\rho}{\lnot\rho}
+$$
+
+\bigskip
+
+So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
+$$ \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot}{\lnot\Box\rho \land \lnot\Box\lnot\rho} $$
+If $\PA$ is consistent, it neither proves nor refutes $\rho$.
