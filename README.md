@@ -44,37 +44,8 @@ Gödel's surprise, then, was that if number theory is consistent, there must be 
 
 ## The requirements for a provability predicate
 
-We can start by writing [the standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
+[There are standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
 As it turns out, these precisely match the system of modal logic known to philosophers as \KF.
-
-First, if $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$.
-That is, the probability predicate must apply to sentences that are in fact provable.
-If we have a proof of $A$ in $\PA$, we can Gödel code it to satisfy $\Prov(\gn{A})$.
-
-The corresponding modal logic rule is called necessitation.
-If $\KF \vdash A$ then $\KF \vdash \Box A$.
-That is, we can add a box to any theorem of the system.
-
-Next:
-
-$$\PA \vdash  (\Prov(\gn{A}) \land \Prov(\gn{A \to B})) \to \Prov(\gn{B})$$
-
-Meaning, we do modus ponens in proofs.
-Concatenate the $A$ code with the $A \to B$ code and you're almost there.
-
-The corresponding modal logic rule:
-
-$\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
-
-And finally:
-
-$$\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$$
-
-This corresponds to what the philosophers call "axiom 4", based on who knows what early paper:
-
-$$\KF \vdash \Box A \to \Box\Box A$$
-
-Actually an axiom schema.
 
 ## Writing things modally
 
