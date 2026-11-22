@@ -135,7 +135,7 @@ In $\mathrm{K4}$:
 \frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot}
 ```
 
-Proving this $\mathrm{K4}$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
+Proving this in $\mathrm{K4}$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
 
 But this argument is weird, right?
 Why does the Gödel sentence have to appear in the premises if it’s not part of the conclusion?
