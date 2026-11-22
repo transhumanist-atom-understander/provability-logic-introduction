@@ -2,6 +2,8 @@
 format:
   gfm:
     wrap: preserve
+filters:
+  - gfm-math.lua
 ---
 
 {{< include macros.tex >}}
@@ -56,8 +58,8 @@ $$\rul{P_1\\P_2}{C}$$
 This means $\KF \vdash (P_1 \land P_2) \to C$.
 
 $\boxdot A$ means $A \land \Box A$.
-Well we want to make an argument from some sentence that is true in PA, we'll always represent it like this.
-You'll see a why later.
+When we want to make an argument from some sentence that is true in $\PA$, we'll always represent it like this.
+You'll see why later.
 
 The first incompleteness theorem, for a Gödel sentence $\gamma$:
 
@@ -75,9 +77,9 @@ From there though we can get a theorem of $\PA$.
 
 Remember, $\gamma$ is just a symbol, a "sentence letter" as we call it, a fundamental unit of our language of modal logic.
 We're going to interpret our sentences of modal logic.
-That has a technical meaning: we'll replace each sentence letter with a sentence of PA, and translate boxes as provability predicates.
+That has a technical meaning: we'll replace each sentence letter with a sentence of $\PA$, and translate boxes as provability predicates.
 
-Let $G$ be the Gödel sentence $\PA$.
+Let $G$ be the Gödel sentence of $\PA$.
 In $\PA$ we have:
 $$\PA \vdash G \leftrightarrow \lnot\Prov(\gn{G})$$
 
@@ -94,7 +96,7 @@ Interpreting our $\KF$ formalization of Gödel's first incompleteness theorem:
 
 $$\PA \vdash \boxdot(G \leftrightarrow \lnot\Prov(\gn{G})) \land \lnot\Prov(\gn{0=1}) \to G$$
 
-We could have replaced $\gamma$ with any $\PA$ sentence and gotten a $\PA$ theorem, but what's special about replacing it with $G$ is is that now, putting those two $\PA$ theorems together, we hvae
+We could have replaced $\gamma$ with any $\PA$ sentence and gotten a $\PA$ theorem, but what's special about replacing it with $G$ is that now, putting those two $\PA$ theorems together, we have
 
 $$\PA \vdash \lnot\Prov(\gn{0=1}) \to G$$
 
@@ -116,7 +118,7 @@ Why does the Gödel sentence have to appear in the premises if it's not part of 
 We want just
 $$ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-And in fact, in PA we have:
+And in fact, in $\PA$ we have:
 $$ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
 
 $\KF$ cannot prove all the metamathematical statements we want.

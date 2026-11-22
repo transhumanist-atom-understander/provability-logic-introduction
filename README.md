@@ -45,21 +45,27 @@ I’ll make a few abbreviations to write out valid arguments in $\mathrm{K4}$.
 
 I’ll write premises above a line and conclusions below it:
 
-$$\frac{\begin{gathered}P_1\\P_2\end{gathered}}{C}$$
+```math
+\frac{\begin{gathered}P_1\\P_2\end{gathered}}{C}
+```
 
 This means $\mathrm{K4}\vdash (P_1 \land P_2) \to C$.
 
 $\boxdot A$ means $A \land \Box A$.
-Well we want to make an argument from some sentence that is true in PA, we’ll always represent it like this.
-You’ll see a why later.
+When we want to make an argument from some sentence that is true in $\mathrm{PA}$, we’ll always represent it like this.
+You’ll see why later.
 
 The first incompleteness theorem, for a Gödel sentence $\gamma$:
 
-$$\frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\gamma}$$
+```math
+\frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\gamma}
+```
 
 And also (since the conclusion is equivalent):
 
-$$\frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\gamma}$$
+```math
+\frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\gamma}
+```
 
 ## How it applies to $\mathrm{PA}$
 
@@ -69,15 +75,20 @@ From there though we can get a theorem of $\mathrm{PA}$.
 
 Remember, $\gamma$ is just a symbol, a “sentence letter” as we call it, a fundamental unit of our language of modal logic.
 We’re going to interpret our sentences of modal logic.
-That has a technical meaning: we’ll replace each sentence letter with a sentence of PA, and translate boxes as provability predicates.
+That has a technical meaning: we’ll replace each sentence letter with a sentence of $\mathrm{PA}$, and translate boxes as provability predicates.
 
-Let $G$ be the Gödel sentence $\mathrm{PA}$.
+Let $G$ be the Gödel sentence of $\mathrm{PA}$.
 In $\mathrm{PA}$ we have:
-$$\mathrm{PA}\vdash G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)$$
+
+```math
+\mathrm{PA}\vdash G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)
+```
 
 And furthermore—this is why it’s fine that we put $\boxdot$ in front of our premise:
 
-$$\mathrm{PA}\vdash \mathrm{Prov}\bigl(\ulcorner G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner) \urcorner\bigr)$$
+```math
+\mathrm{PA}\vdash \mathrm{Prov}\bigl(\ulcorner G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner) \urcorner\bigr)
+```
 
 Any $\mathrm{PA}$ theorem can be wrapped in a provability predicate like that.
 A theorem of $\mathrm{PA}$ has a proof, and that proof has a Gödel code.
@@ -86,11 +97,15 @@ Or maybe I should just say it’s one of the conditions mentioned earlier.
 All theorems of $\mathrm{K4}$, when interpreted, are theorems of $\mathrm{PA}$.
 Interpreting our $\mathrm{K4}$ formalization of Gödel’s first incompleteness theorem:
 
-$$\mathrm{PA}\vdash \boxdot(G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)) \land \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to G$$
+```math
+\mathrm{PA}\vdash \boxdot(G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)) \land \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to G
+```
 
-We could have replaced $\gamma$ with any $\mathrm{PA}$ sentence and gotten a $\mathrm{PA}$ theorem, but what’s special about replacing it with $G$ is is that now, putting those two $\mathrm{PA}$ theorems together, we hvae
+We could have replaced $\gamma$ with any $\mathrm{PA}$ sentence and gotten a $\mathrm{PA}$ theorem, but what’s special about replacing it with $G$ is that now, putting those two $\mathrm{PA}$ theorems together, we have
 
-$$\mathrm{PA}\vdash \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to G$$
+```math
+\mathrm{PA}\vdash \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to G
+```
 
 That is, $\mathrm{PA}$, augmented with its own consistency as an assumption, does prove $G$.
 
@@ -99,7 +114,10 @@ That is, $\mathrm{PA}$, augmented with its own consistency as an assumption, doe
 I don’t think we really needed modal logic to understand that.
 But here’s something that I got for the first time as a modal logic argument.
 In $\mathrm{K4}$:
-$$ \frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot} $$
+
+```math
+\frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot}
+```
 
 I don’t want to go through the proof right now, I just want to show you how far $\mathrm{K4}$ can take you.
 But doing this proof in $\mathrm{K4}$ was my first real experience of the power of modal logic to track quotation levels that I can’t track in my head.
@@ -108,10 +126,16 @@ But it’s not satisfactory.
 Why does the Gödel sentence have to appear in the premises if it’s not part of the conclusion?
 
 We want just
-$$ \frac{\begin{gathered}\lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot} $$
 
-And in fact, in PA we have:
-$$ \mathrm{PA}\vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
+```math
+\frac{\begin{gathered}\lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot}
+```
+
+And in fact, in $\mathrm{PA}$ we have:
+
+```math
+\mathrm{PA}\vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot
+```
 
 $\mathrm{K4}$ cannot prove all the metamathematical statements we want.
 Next part we’ll see what we need to add.
