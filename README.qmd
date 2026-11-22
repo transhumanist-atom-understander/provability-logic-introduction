@@ -96,6 +96,7 @@ $$\PA \vdash \lnot\Prov(\gn{0=1}) \to G$$
 
 We're going to interpret our sentences of modal logic.
 That has a technical meaning: we'll replace each sentence letter with a sentence of $\PA$, translate boxes to provability predicates, and translate all instances of $\bot$ to $0=1$.
+The arithmetic soundness of $\KF$ means that when you interpret a $\KF$ theorem, the result is a $\PA$ theorem, regardless of which $\PA$ sentences you replaced the sentence letters with.
 
 Interpreting our $\KF$ formalization of Gödel's first incompleteness theorem, replacing the sentence letter $\gamma$ with the complicated $\PA$ sentence $G$:
 
