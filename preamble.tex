@@ -4,10 +4,6 @@
 \setbeamertemplate{footline}[frame number]
 \usepackage{amsmath,amssymb,alltt}
 
-\newcommand{\Prov}{\ensuremath{\mathrm{Prov}}}
-\newcommand{\PA}{\ensuremath{\mathrm{PA}}}
-\newcommand{\KF}{\ensuremath{\mathrm{K4}}}
-\newcommand{\GL}{\ensuremath{\mathrm{GL}}}
-\newcommand{\gn}[1]{\ulcorner #1 \urcorner}
-% A rule: premises (separated by \\) over a conclusion.
-\newcommand{\rul}[2]{\begin{array}{c}#1\\\hline #2\end{array}}
+% The math macros are in macros.tex. slides.qmd includes it after this file;
+% README.qmd includes it as Markdown, so it can't have % comments.
+% \rul{P_1 \\ P_2}{C}: premises, separated by \\, over a conclusion.
