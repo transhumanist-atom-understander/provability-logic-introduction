@@ -80,9 +80,9 @@ That appears to say that, if $\gamma$ is a sentence asserting its own unprovabil
 
 So far all we have are theorems of modal logic onto which we can project metamathematical interpretations.
 
-But the power of our modal logic is its _arithmetic soundness_: that whatever we prove in $\KF$ becomes a theorem of $\PA$ under any interpretation.
+But the power of our modal logic is its _arithmetic soundness_: that the theorems can be translated to $\PA$ theorems.
 
-Before getting into how that works, let's start with what $\PA$ theorems we might like to have.
+But before getting into how that works, let's start with what $\PA$ theorems we might like to have.
 
 We already have, for the sentence $G$ constructed according to Gödel's recipe:
 
@@ -122,10 +122,9 @@ But here's something that I got for the first time as a modal logic argument.
 In $\KF$:
 $$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-I don't want to go through the proof right now, I just want to show you how far $\KF$ can take you.
-But doing this proof in $\KF$ was my first real experience of the power of modal logic to track quotation levels that I can't track in my head.
+Proving this $\KF$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
 
-But it's not satisfactory.
+But this argument is weird, right?
 Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
 
 We want just
@@ -134,5 +133,5 @@ $$ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 And in fact, in $\PA$ we have:
 $$ \PA \vdash \lnot\Prov(\gn{0=1}) \to \lnot\Prov\bigl(\gn{\lnot\Prov(\gn{0=1})}\bigr) $$
 
-$\KF$ cannot prove all the metamathematical statements we want.
-Next part we'll see what we need to add.
+So $\KF$ cannot prove all the metamathematical statements we want.
+In the next post, I'll explain how to augment it to get the system $\GL$, synonymous with provability logic.
