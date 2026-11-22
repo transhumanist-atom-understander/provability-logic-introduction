@@ -122,7 +122,7 @@ But here's something that I got for the first time as a modal logic argument.
 In $\KF$:
 $$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-Proving this $\KF$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
+Proving this in $\KF$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
 
 But this argument is weird, right?
 Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
