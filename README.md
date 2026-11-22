@@ -80,9 +80,9 @@ That appears to say that, if $\gamma$ is a sentence asserting its own unprovabil
 
 So far all we have are theorems of modal logic onto which we can project metamathematical interpretations.
 
-But the power of our modal logic is its *arithmetic soundness*: that whatever we prove in $\mathrm{K4}$ becomes a theorem of $\mathrm{PA}$ under any interpretation.
+But the power of our modal logic is its *arithmetic soundness*: that the theorems can be translated to $\mathrm{PA}$ theorems.
 
-Before getting into how that works, let’s start with what $\mathrm{PA}$ theorems we might like to have.
+But before getting into how that works, let’s start with what $\mathrm{PA}$ theorems we might like to have.
 
 We already have, for the sentence $G$ constructed according to Gödel’s recipe:
 
@@ -135,10 +135,9 @@ In $\mathrm{K4}$:
 \frac{\begin{gathered}\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot\end{gathered}}{\lnot\Box\lnot\Box\bot}
 ```
 
-I don’t want to go through the proof right now, I just want to show you how far $\mathrm{K4}$ can take you.
-But doing this proof in $\mathrm{K4}$ was my first real experience of the power of modal logic to track quotation levels that I can’t track in my head.
+Proving this in $\mathrm{K4}$ was my first real experience of the power of modal logic, as a system for tracking quotation levels on paper, instead of in my head.
 
-But it’s not satisfactory.
+But this argument is weird, right?
 Why does the Gödel sentence have to appear in the premises if it’s not part of the conclusion?
 
 We want just
@@ -153,5 +152,5 @@ And in fact, in $\mathrm{PA}$ we have:
 \mathrm{PA}\vdash \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to \lnot\mathrm{Prov}\bigl(\ulcorner \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \urcorner\bigr)
 ```
 
-$\mathrm{K4}$ cannot prove all the metamathematical statements we want.
-Next part we’ll see what we need to add.
+So $\mathrm{K4}$ cannot prove all the metamathematical statements we want.
+In the next post, I’ll explain how to augment it to get the system $\mathrm{GL}$, synonymous with provability logic.
