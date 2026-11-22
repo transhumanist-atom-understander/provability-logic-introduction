@@ -27,7 +27,7 @@ We will interpret a sentence $\Box P$ by replacing the sentence $P$ with some se
 
 I’ll avoid the possibility operator to keep things simple, except to note that I think the provability interpretation of “possibility” fits well with the English word.
 In modal logic, the relationship of necessity and possibility is that $\Diamond P$ iff $\lnot \Box \lnot P$.
-Interpreting the box as provability, then our notion of possibility is that there’s no disproof of $P$.
+Interpreting the box as provability, our notion of possibility is that there’s no disproof of $P$.
 
 As it turns out, [the standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions) precisely match the axioms of a system of modal logic, known to philosophers as $\mathrm{K4}$.
 
@@ -42,8 +42,8 @@ The Gödel sentence will appear in modal logic as a sentence equivalent to its o
 $\gamma$ is just an elementary symbol of the logic, a “sentence letter” as some say.
 I’ll be putting sentence letters in lowercase, whereas arbitrary sentences are uppercase.
 
-The logic also has a symbol $\bot$ representing falsehood, equivalent to propositional contradictions like $\p\land\not p$.
-Our modal analogue of consistency is the claim that it has no proof: $\not \Box \bot$.
+The logic also has a symbol $\bot$ representing falsehood, equivalent to propositional contradictions like $p \land \lnot p$.
+Our modal analogue of consistency is the claim that $\bot$ has no proof: $\lnot\Box\bot$.
 
 ## A modal logic analogue of the first incompleteness theorem
 
@@ -78,12 +78,11 @@ That appears to say that, if $\gamma$ is a sentence asserting its own unprovabil
 
 ## What we want is a $\mathrm{PA}$ theorem
 
-\<\<\<\<\<\<\< HEAD
-So far all we have is theorems of modal logic onto which we can project metamathematical interpretations.
+So far all we have are theorems of modal logic onto which we can project metamathematical interpretations.
 
-But the power of our modal logic is its *arithmetic soundness*: that what we prove in $\mathrm{K4}$ is true in $\mathrm{PA}$.
+But the power of our modal logic is its *arithmetic soundness*: that whatever we prove in $\mathrm{K4}$ becomes a theorem of $\mathrm{PA}$ under any interpretation.
 
-Before getting into how that works let’s start with what $\mathrm{PA}$ theorems we might like to have.
+Before getting into how that works, let’s start with what $\mathrm{PA}$ theorems we might like to have.
 
 We already have, for the sentence $G$ constructed according to Gödel’s recipe:
 
@@ -91,7 +90,7 @@ We already have, for the sentence $G$ constructed according to Gödel’s recipe
 \mathrm{PA}\vdash G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)
 ```
 
-One thing we want to say is that, $\mathrm{PA}$ augmented with the assumption of its own consistency does in fact prove $G$:
+One thing we want to say is that $\mathrm{PA}$, augmented with the assumption of its own consistency, does in fact prove $G$:
 
 ```math
 \mathrm{PA}\vdash \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to G
@@ -100,7 +99,7 @@ One thing we want to say is that, $\mathrm{PA}$ augmented with the assumption of
 ## From $\mathrm{K4}$ to $\mathrm{PA}$
 
 We’re going to interpret our sentences of modal logic.
-That has a technical meaning: we’ll replace each sentence letter with a sentence of PA, translate boxes to provability predicates, and all instances of $\bot$ to $0=1$.
+That has a technical meaning: we’ll replace each sentence letter with a sentence of $\mathrm{PA}$, translate boxes to provability predicates, and translate all instances of $\bot$ to $0=1$.
 
 Interpreting our $\mathrm{K4}$ formalization of Gödel’s first incompleteness theorem, replacing the sentence letter $\gamma$ with the complicated $\mathrm{PA}$ sentence $G$:
 
@@ -110,7 +109,6 @@ Interpreting our $\mathrm{K4}$ formalization of Gödel’s first incompleteness 
 
 On the left side of that implication, we see one thing that we have in $\mathrm{PA}$, that $G \leftrightarrow \lnot\mathrm{Prov}(\ulcorner G \urcorner)$.
 
-\<\<\<\<\<\<\< HEAD
 In fact, we also have the next term:
 
 ```math
@@ -118,7 +116,7 @@ In fact, we also have the next term:
 ```
 
 Any $\mathrm{PA}$ theorem can be wrapped in a provability predicate like this.
-If it’s a theorem, that it has a proof, and we can Gödel code that proof.
+If it’s a theorem, then it has a proof, and we can Gödel code that proof.
 This is also one of [the standard conditions for a provability predicate mentioned earlier](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
 
 Since we have this implication by arithmetic soundness of $\mathrm{K4}$, and we have those first two terms of the antecedent, then we have what we wanted in $\mathrm{PA}$, to repeat:
@@ -152,7 +150,7 @@ We want just
 And in fact, in $\mathrm{PA}$ we have:
 
 ```math
-\mathrm{PA}\vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot
+\mathrm{PA}\vdash \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \to \lnot\mathrm{Prov}\bigl(\ulcorner \lnot\mathrm{Prov}(\ulcorner 0=1 \urcorner) \urcorner\bigr)
 ```
 
 $\mathrm{K4}$ cannot prove all the metamathematical statements we want.
