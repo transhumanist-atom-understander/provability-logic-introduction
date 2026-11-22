@@ -1,9 +1,14 @@
-name: Render slides.tex
+name: Render slides.tex and README.md
 
 on:
   push:
     branches: [main]
-    paths: [slides.qmd, preamble.tex, .github/workflows/render-tex.yml]
+    paths:
+      - slides.qmd
+      - README.qmd
+      - preamble.tex
+      - macros.tex
+      - .github/workflows/render.yml
   workflow_dispatch:
 
 permissions:
@@ -23,14 +28,17 @@ jobs:
       # output-ext:tex stops after Pandoc: no PDF, and no LaTeX needed.
       - run: quarto render slides.qmd --to beamer -M output-ext:tex
 
-      - name: Commit slides.tex if it changed
+      # Pandoc expands the macros from macros.tex, since GitHub can't.
+      - run: quarto render README.qmd
+
+      - name: Commit the rendered files if they changed
         run: |
-          git add slides.tex
+          git add slides.tex README.md
           if git diff --cached --quiet; then
-            echo "slides.tex unchanged"
+            echo "slides.tex and README.md unchanged"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Render slides.tex from slides.qmd"
+          git commit -m "Render slides.tex and README.md"
           git push

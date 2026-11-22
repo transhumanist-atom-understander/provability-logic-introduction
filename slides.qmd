@@ -7,7 +7,7 @@ format:
     section-titles: false
     keep-tex: true
     pdf-engine: pdflatex
-    include-in-header: preamble.tex
+    include-in-header: [preamble.tex, macros.tex]
 ---
 
 # Metamathematics in modal logic
