@@ -1,202 +1,155 @@
----
-title: Provability logic
-subtitle: An introduction
-format:
-  beamer:
-    theme: default
-    section-titles: false
-    keep-tex: true
-    pdf-engine: pdflatex
-    include-in-header: preamble.tex
----
+$$
+\newcommand{\Prov}{\ensuremath{\mathrm{Prov}}}
+\newcommand{\PA}{\ensuremath{\mathrm{PA}}}
+\newcommand{\KF}{\ensuremath{\mathrm{\KF}}}
+\newcommand{\GL}{\ensuremath{\mathrm{GL}}}
+\newcommand{\gn}[1]{\ulcorner #1 \urcorner}
+% A rule: premises (separated by \\) over a conclusion.
+\newcommand{\rul}[2]{\frac{\begin{gathered}#1\end{gathered}}{#2}}
+$$
 
 # Metamathematics in modal logic
 
-##
+Gödel shocked the world of mathematics by showing that formal proofs of number theory could be done within number theory itself.
+Sentences and proofs could be coded as numbers, and correctness of a proof was a number theoretic property.
+Furthermore, sentences could refer to their own properties, by the trick we now call quining.
+From there, he could demonstrate that number theory, if consistent, must be incomplete.
 
-```{=latex}
-\centering\Large Part 1\\[1ex] Metamathematics in modal logic
-```
+In my opinion, the profound insights here were about self-reference: that number theory could represent its own rules, and that sentences could refer to themselves.
+From there to the consequences about incompleteness is straightforward.
 
-## Necessity and possibility
+Not just straightforward: it's mechanical, with modal logic.
 
-$\Prov(x)$: a formula of arithmetic saying that $x$ is the code of a theorem of $\PA$.
+My goal in this post is to show you the arguments of metamathematics that can be formalized in the modal logic \KF.
+By the end we'll also see what's missing, and I'll show how to complete the system in the next post.
+But already in \KF we can reason through Gödel's first and second incompleteness theorems.
+In fact, I actually never managed to follow the second incompleteness theorem before I learned to do it in \KF.
 
-Write $\Box A$ for $\Prov(\gn{A})$.
+## Provability and possibility
 
-Possibility is non-disprovability: $\Diamond P$ is $\lnot\Box\lnot P$
+Modal logic was developed by philosophers to formalize arguments about the concepts of necessity and possibility.
 
-## Properties of the provability predicate
+The new symbols are a box and a diamond. $\Box P$ means necessarily $P$, and $\Diamond P$ means possibly $P$.
 
-\bigskip
+To do metamathematics in modal logic, we instead interpret $\Box P$ in terms of provability.
+We will assume a formal system $\PA$ for first-order Peano arithmetic.
+Such a system has a provability predicate $\Prov(\gn{A})$ representing the provability of the sentence $A$ (where $\gn{A}$ is the numeric Gödel code of the sentence).
+We will interpret a sentence $\Box P$ by replacing the letter $P$ with some sentence $A$ of Peano arithmetic, and interpreting $\Box P$ as $\Prov(\gn{A})$.
 
-[Hilbert–Bernays–Löb provability conditions](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions)
+I'll avoid the possibility operator to keep things simple, except to note that I think the provability interpretation of "possibility" fits well with the English word.
+In modal logic, the relationship of necessity and possibility is that $\Diamond P$ iff $\lnot \Box \lnot P$.
+Interpreting the box as provability, then our diamond means that there's no disproof of $P$.
+That does intuitively mean it's possibly true.
+Gödel's surprise, then, was that if number theory is consistent, there must be a sentence in the language of number theory that is possible but not provable.
 
-\bigskip
+## The requirements for a provability predicate
 
-- If $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$ \
-  Can Godel code the proof
-- $\PA \vdash  (\Prov(\gn{A}) \land \Prov(\gn{A \to B})) \to \Prov(\gn{B})$ \
-  Can do modus ponens in proofs: concatenate the $A$ code with the $A \to B$ code and do modus ponens
-- $\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$ \
-  Represents the first rule in the system
+We can start by writing [the standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
+As it turns out, these precisely match the system of modal logic known to philosophers as \KF.
 
-## The modal logic $\KF$
+First, if $\PA \vdash A$ then $\PA \vdash \Prov(\gn{A})$.
+That is, the probability predicate must apply to sentences that are in fact provable.
+If we have a proof of $A$ in $\PA$, we can Gödel code it to satisfy $\Prov(\gn{A})$.
 
-\bigskip
+The corresponding modal logic rule is called necessitation.
+If $\KF \vdash A$ then $\KF \vdash \Box A$.
+That is, we can add a box to any theorem of the system.
 
-- If $P$ is a tautology then $\KF \vdash P$
-- If $\KF \vdash A$ then $\KF \vdash \Box A$
-- $\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
-- $\KF \vdash \Box A \to \Box\Box A$
+Next:
+
+$$\PA \vdash  (\Prov(\gn{A}) \land \Prov(\gn{A \to B})) \to \Prov(\gn{B})$$
+
+Meaning, we do modus ponens in proofs.
+Concatenate the $A$ code with the $A \to B$ code and you're almost there.
+
+The corresponding modal logic rule:
+
+$\KF \vdash \Box(A \to B) \to (\Box A \to \Box B)$
+
+And finally:
+
+$$\PA \vdash \Prov(\gn{A}) \to \Prov(\gn{\Prov(\gn{A})})$$
+
+This corresponds to what the philosophers call "axiom 4", based on who knows what early paper:
+
+$$\KF \vdash \Box A \to \Box\Box A$$
+
+Actually an axiom schema.
 
 ## Writing things modally
 
-Abbreviation: $\boxdot A$ is $A \land \Box A$.
+I'll make a few abbreviations to write out valid arguments in $\KF$.
 
-\bigskip
+I'll write premises above a line and conclusions below it:
+
+$$\rul{P_1\\P_2}{C}$$
+
+This means $\KF \vdash (P_1 \land P_2) \to C$.
+
+$\boxdot A$ means $A \land \Box A$.
+Well we want to make an argument from some sentence that is true in PA, we'll always represent it like this.
+You'll see a why later.
 
 The first incompleteness theorem, for a Gödel sentence $\gamma$:
-$$
-    \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}
-    \qquad\qquad
-    \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}
+
+$$\rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}$$
+
+And also (since the conclusion is equivalent):
+
+$$\rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}
 $$
 
-\bigskip
+## How it applies to $\PA$
 
 If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
+That's what we want to say, but so far all we have is a theorem of the modal logic $\KD$.
+From there though we can get a theorem of $\PA$.
 
-## Here it applies to $\PA$
+Remember, $\gamma$ is just a symbol, a "sentence letter" as we call it, a fundamental unit of our language of modal logic.
+We're going to interpret our sentences of modal logic.
+That has a technical meaning: we'll replace each sentence letter with a sentence of PA, and translate boxes as provability predicates.
 
-The Gödel sentence $G$ of $\PA$:
-\begin{align*}
-    \PA &\vdash G \leftrightarrow \lnot\Prov(\gn{G}) \\
-    \PA &\vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
-\end{align*}
-That is $\boxdot(\gamma \leftrightarrow \lnot\Box\gamma)$, with $G$ for $\gamma$. So
-\begin{align*}
-    \PA &\vdash \lnot\Prov(\gn{\bot}) \to G \\
-    \PA &\vdash \lnot\Prov(\gn{\bot}) \to \lnot\Prov(\gn{G})
-\end{align*}
+Let $G$ be the Gödel sentence $\PA$.
+In $\PA$ we have:
+$$\PA \vdash G \leftrightarrow \lnot\Prov(\gn{G})$$
+
+And furthermore—this is why it's fine that we put $\boxdot$ in front of our premise:
+
+$$\PA \vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)
+
+Any $\PA$ theorem can be wrapped in a provability predicate like that.
+A theorem of $\PA$ has a proof, and that proof has a Gödel code.
+Or maybe I should just say it's one of the conditions mentioned earlier.
+
+All theorems of $\KD$, when interpreted, are theorems of $\PA$.
+Interpreting our $\KD$ formalization of Gödel's first incompleteness theorem:
+
+$$\PA \vdash \boxdot(G \leftrightarrow \lnot\Prov(\gn{G}) \land \lnot\Prov(\gn{0=1}) \to G$$
+
+We could have replaced $\gamma$ with any $\PA$ sentence and gotten a $\PA$ theorem, but what's special about replacing it with $G$ is is that now, putting those two $\PA$ theorems together, we hvae
+
+$$\PA &\vdash \lnot\Prov(\gn{0=1}) \to G$$
+
+That is, $\PA$, augmented with its own consistency as an assumption, does prove $G$.
 
 ## The second incompleteness theorem
 
+I don't think we really needed modal logic to understand that.
+But here's something that I got for the first time as a modal logic argument.
+In $\KD$:
 $$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-Not satisfactory.
-Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
+I don't want to go through the proof right now, I just want to show you how far $\KD$ can take you.
+But doing this proof in $\KD$ was my first real experience of the power of modal logic to track quotation levels that I can't track in my head.
 
-\bigskip
+But it's not satisfactory.
+Why does the Gödel sentence have to appear in the premises if it's not part of the conclusion?
 
 We want just
 $$ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-\bigskip
-
-In PA we have:
+And in fact, in PA we have:
 $$ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
 
-\bigskip
-
-K4 cannot prove all the metamathematical statements we want.
+\KF cannot prove all the metamathematical statements we want.
 Next part we'll see what we need to add.
-
-# Provability logic
-
-##
-
-```{=latex}
-\centering\Large Part 2\\[1ex] Provability logic\\[1ex]
-\normalsize Deciding any question about $\PA$ provability
-```
-
-## Löb's theorem
-
-In K4, for any sentence $P$:
-
-$$ \rul{\boxdot\bigl(\lambda \leftrightarrow (\Box\lambda \to P)\bigr) \\ \Box(\Box P \to P)}{\Box P} $$
-
-We want:
-
-$$ \rul{\Box(\Box P \to P)}{\Box P} $$
-
-## The logic $\GL$
-
-$\GL$ is $\KF$ plus, for every sentence $P$,
-$$ \GL \vdash \Box(\Box P \to P) \to \Box P $$
-
-\bigskip
-
-Then
-$$ \GL \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
-
-## Completeness
-
-Solovay: $\GL \vdash A$ if and only if $\PA \vdash A^*$ for every way $*$ of reading
-the sentence letters of $A$ as sentences of arithmetic, and $\Box$ as $\Prov$.
-
-\bigskip
-
-$\GL$ is decidable, so any question about $\PA$ provability that can be written in
-modal logic can be decided.
-
-## A provability logic REPL {.fragile}
-
-`decide-provability`: tableaux for $\GL$ in Lean, and
-`rtableau`, a Python wrapper of it.
-
-\bigskip
-
-```{=latex}
-{\small\begin{alltt}
-with Decider(path) as d:
-        d.closed(d.tableau("\(\Box(\Box\)p \(\to\) p) \(\to\) \(\Box\)p"))  \# True
-        d.closed(d.tableau("\(\Box\)p \(\to\) p"))  \# False
-\end{alltt}}
-```
-
-# Rosser's trick
-
-##
-
-```{=latex}
-\centering\Large Part 3\\[1ex] Rosser's trick
-```
-
-## Already proved, and cannot prove
-
-Already proved:
-$$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma} $$
-Cannot prove:
-$$ \rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\lnot\gamma} $$
-
-\bigskip
-
-Is there any statement we can prove both incompletenesses for?
-
-## The Rosser sentence
-
-$\Box A \prec \Box B$: there is a proof of $A$ before any proof of $B$.
-
-\bigskip
-
-$$ \rho \leftrightarrow \Box\lnot\rho \prec \Box\rho $$
-
-\bigskip
-
-$\rho$ says: there is a refutation of me before any proof of me.
-
-## Rosser's trick
-
-$$
-    \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \Box\lnot\rho \\ \lnot\Box\bot}{\rho}
-    \qquad\qquad
-    \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot \\ \Box\rho}{\lnot\rho}
-$$
-
-\bigskip
-
-So, in Guaspari and Solovay's logic $\mathrm{R}^-$, $\GL$ with $\prec$:
-$$ \rul{\boxdot(\rho \leftrightarrow \Box\lnot\rho \prec \Box\rho) \\ \lnot\Box\bot}{\lnot\Box\rho \land \lnot\Box\lnot\rho} $$
-If $\PA$ is consistent, it neither proves nor refutes $\rho$.
