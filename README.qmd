@@ -8,20 +8,17 @@ format:
 
 # Metamathematics in modal logic
 
-Gödel shocked the world of mathematics by showing that formal proofs of number theory could be done within number theory itself.
-Sentences and proofs could be coded as numbers, and correctness of a proof was a number theoretic property.
-Furthermore, sentences could refer to their own properties, by the trick we now call quining.
-From there, he could demonstrate that number theory, if consistent, must be incomplete.
+To do metamathematics in modal logic, you take for granted all of Gödel's great insights:
 
-In my opinion, the profound insights here were about self-reference: that number theory could represent its own rules, and that sentences could refer to themselves.
-From there to the consequences about incompleteness is straightforward.
+* That when formal proofs are represented as numbers, correctness of a proof can be defined in the language of number theory
 
-Not just straightforward: it's mechanical, with modal logic.
+* That a sentence can refer to itself by the trick we now call "diagonalization" or "quining"
 
-My goal in this post is to show you the arguments of metamathematics that can be formalized in the modal logic $\KF$.
-By the end we'll also see what's missing, and I'll show how to complete the system in the next post.
-But already in $\KF$ we can reason through Gödel's first and second incompleteness theorems.
-In fact, I actually never managed to follow the second incompleteness theorem before I learned to do it in $\KF$.
+Once you have Gödel's sentence that says "I am not provable", the interesting conceptual work is done.
+
+The remaining part, from there to the incompleteness theorems, is rather mechanical.
+In modal logic, these arguments become fully mechanical.
+To me at least, it is appealing to be able to compute from the Gödel sentence to the unprovability of the consistency of arithmetic by a procedure as algorithmic as long division.
 
 ## Provability and possibility
 
@@ -31,23 +28,31 @@ The new symbols are a box and a diamond. $\Box P$ means necessarily $P$, and $\D
 
 To do metamathematics in modal logic, we instead interpret $\Box P$ in terms of provability.
 We will assume a formal system $\PA$ for first-order Peano arithmetic.
-Such a system has a provability predicate $\Prov(\gn{A})$ representing the provability of the sentence $A$ (where $\gn{A}$ is the numeric Gödel code of the sentence).
-We will interpret a sentence $\Box P$ by replacing the letter $P$ with some sentence $A$ of Peano arithmetic, and interpreting $\Box P$ as $\Prov(\gn{A})$.
+Such a system has a provability predicate $\Prov(\gn{A})$ representing the provability of the sentence $A$, where $\gn{A}$ is the numeric Gödel code of the sentence.
+We will interpret a sentence $\Box P$ by replacing the sentence $P$ with some sentence $A$ of Peano arithmetic, and interpreting $\Box P$ as $\Prov(\gn{A})$.
 
 I'll avoid the possibility operator to keep things simple, except to note that I think the provability interpretation of "possibility" fits well with the English word.
 In modal logic, the relationship of necessity and possibility is that $\Diamond P$ iff $\lnot \Box \lnot P$.
-Interpreting the box as provability, then our diamond means that there's no disproof of $P$.
-That does intuitively mean it's possibly true.
-Gödel's surprise, then, was that if number theory is consistent, there must be a sentence in the language of number theory that is possible but not provable.
+Interpreting the box as provability, then our notion of possibility is that there's no disproof of $P$.
 
-## The requirements for a provability predicate
+As it turns out, [the standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions) precisely match the axioms of a system of modal logic, known to philosophers as $\KF$.
 
-[There are standard conditions a provability predicate must satisfy](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
-As it turns out, these precisely match the system of modal logic known to philosophers as $\KF$.
+## The Gödel sentence and consistency as sentences of modal logic
 
-## Writing things modally
+The Gödel sentence will appear in modal logic as a sentence equivalent to its own unprovability:
 
-I'll make a few abbreviations to write out valid arguments in $\KF$.
+$$\gamma \leftrightarrow \lnot\Box\gamma$$
+
+$\gamma$ is just an elementary symbol of the logic, a "sentence letter" as some say.
+I'll be putting sentence letters in lowercase, whereas arbitrary sentences are uppercase.
+
+The logic also has a symbol $\bot$ representing falsehood, equivalent to propositional contradictions like $\p\land\not p$.
+Our modal analogue of consistency is the claim that it has no proof: $\not \Box \bot$.
+
+## A modal logic analogue of the first incompleteness theorem
+
+I won't give any proofs of $\KF$ theorems.
+We'll just talk about what metamathematical arguments can be made in it, and what's missing.
 
 I'll write premises above a line and conclusions below it:
 
@@ -55,50 +60,60 @@ $$\rul{P_1\\P_2}{C}$$
 
 This means $\KF \vdash (P_1 \land P_2) \to C$.
 
-$\boxdot A$ means $A \land \Box A$.
-Well we want to make an argument from some sentence that is true in PA, we'll always represent it like this.
-You'll see a why later.
+Another abbreviation: $\boxdot A$ means $A \land \Box A$.
 
-The first incompleteness theorem, for a Gödel sentence $\gamma$:
+A modal logic analogue of the first incompleteness theorem:
 
 $$\rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\gamma}$$
+
+This is in fact a theorem of $\KF$.
 
 And also (since the conclusion is equivalent):
 
 $$\rul{\boxdot(\gamma \leftrightarrow \lnot\Box\gamma) \\ \lnot\Box\bot}{\lnot\Box\gamma}$$
 
-## How it applies to $\PA$
+That appears to say that, if $\gamma$ is a sentence asserting its own unprovability, then, assuming consistency, it is both true and unprovable.
 
-If $\PA$ is consistent, the Gödel sentence is true, and unprovable.
-That's what we want to say, but so far all we have is a theorem of the modal logic $\KF$.
-From there though we can get a theorem of $\PA$.
+## What we want is a $\PA$ theorem
 
-Remember, $\gamma$ is just a symbol, a "sentence letter" as we call it, a fundamental unit of our language of modal logic.
-We're going to interpret our sentences of modal logic.
-That has a technical meaning: we'll replace each sentence letter with a sentence of PA, and translate boxes as provability predicates.
+So far all we have is theorems of modal logic onto which we can project metamathematical interpretations.
 
-Let $G$ be the Gödel sentence $\PA$.
-In $\PA$ we have:
+But the power of our modal logic is its _arithmetic soundness_: that what we prove in $\KF$ is true in $\PA$.
+
+Before getting into how that works let's start with what $\PA$ theorems we might like to have.
+
+We already have, for the sentence $G$ constructed according to Gödel's recipe:
+
 $$\PA \vdash G \leftrightarrow \lnot\Prov(\gn{G})$$
 
-And furthermore—this is why it's fine that we put $\boxdot$ in front of our premise:
-
-$$\PA \vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)$$
-
-Any $\PA$ theorem can be wrapped in a provability predicate like that.
-A theorem of $\PA$ has a proof, and that proof has a Gödel code.
-Or maybe I should just say it's one of the conditions mentioned earlier.
-
-All theorems of $\KF$, when interpreted, are theorems of $\PA$.
-Interpreting our $\KF$ formalization of Gödel's first incompleteness theorem:
-
-$$\PA \vdash \boxdot(G \leftrightarrow \lnot\Prov(\gn{G})) \land \lnot\Prov(\gn{0=1}) \to G$$
-
-We could have replaced $\gamma$ with any $\PA$ sentence and gotten a $\PA$ theorem, but what's special about replacing it with $G$ is is that now, putting those two $\PA$ theorems together, we hvae
+One thing we want to say is that, $\PA$ augmented with the assumption of its own consistency does in fact prove $G$:
 
 $$\PA \vdash \lnot\Prov(\gn{0=1}) \to G$$
 
-That is, $\PA$, augmented with its own consistency as an assumption, does prove $G$.
+## From $\KF$ to $\PA$
+
+We're going to interpret our sentences of modal logic.
+That has a technical meaning: we'll replace each sentence letter with a sentence of PA, translate boxes to provability predicates, and all instances of $\bot$ to $0=1$.
+
+Interpreting our $\KF$ formalization of Gödel's first incompleteness theorem, replacing the sentence letter $\gamma$ with the complicated $\PA$ sentence $G$:
+
+$$\PA \vdash ((G \leftrightarrow \lnot\Prov(\gn{G})) \land \Prov(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}) \land \lnot\Prov(\gn{0=1})) \to G$$
+
+On the left side of that implication, we see one thing that we have in $\PA$, that $G \leftrightarrow \lnot\Prov(\gn{G})$.
+
+In fact, we also have the next term:
+
+$$\PA \vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)$$
+
+Any $\PA$ theorem can be wrapped in a provability predicate like this.
+If it's a theorem, that it has a proof, and we can Gödel code that proof.
+This is also one of [the standard conditions for a provability predicate mentioned earlier](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions#The_conditions).
+
+Since we have this implication by arithmetic soundness of $\KF$, and we have those first two terms of the antecedent, then we have what we wanted in $\PA$, to repeat:
+
+$$\PA \vdash \lnot\Prov(\gn{0=1}) \to G$$
+
+
 
 ## The second incompleteness theorem
 
