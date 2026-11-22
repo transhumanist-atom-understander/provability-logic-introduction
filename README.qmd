@@ -2,6 +2,8 @@
 format:
   gfm:
     wrap: preserve
+filters:
+  - gfm-math.lua
 ---
 
 {{< include macros.tex >}}
@@ -76,6 +78,7 @@ That appears to say that, if $\gamma$ is a sentence asserting its own unprovabil
 
 ## What we want is a $\PA$ theorem
 
+<<<<<<< HEAD
 So far all we have is theorems of modal logic onto which we can project metamathematical interpretations.
 
 But the power of our modal logic is its _arithmetic soundness_: that what we prove in $\KF$ is true in $\PA$.
@@ -101,6 +104,7 @@ $$\PA \vdash ((G \leftrightarrow \lnot\Prov(\gn{G})) \land \Prov(\gn{G \leftrigh
 
 On the left side of that implication, we see one thing that we have in $\PA$, that $G \leftrightarrow \lnot\Prov(\gn{G})$.
 
+<<<<<<< HEAD
 In fact, we also have the next term:
 
 $$\PA \vdash \Prov\bigl(\gn{G \leftrightarrow \lnot\Prov(\gn{G})}\bigr)$$
@@ -112,8 +116,6 @@ This is also one of [the standard conditions for a provability predicate mention
 Since we have this implication by arithmetic soundness of $\KF$, and we have those first two terms of the antecedent, then we have what we wanted in $\PA$, to repeat:
 
 $$\PA \vdash \lnot\Prov(\gn{0=1}) \to G$$
-
-
 
 ## The second incompleteness theorem
 
@@ -131,7 +133,7 @@ Why does the Gödel sentence have to appear in the premises if it's not part of 
 We want just
 $$ \rul{\lnot\Box\bot}{\lnot\Box\lnot\Box\bot} $$
 
-And in fact, in PA we have:
+And in fact, in $\PA$ we have:
 $$ \PA \vdash \lnot\Box\bot \to \lnot\Box\lnot\Box\bot $$
 
 $\KF$ cannot prove all the metamathematical statements we want.
