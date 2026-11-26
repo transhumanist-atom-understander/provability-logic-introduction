@@ -100,6 +100,7 @@ One thing we want to say is that $\mathrm{PA}$, augmented with the assumption of
 
 We’re going to interpret our sentences of modal logic.
 That has a technical meaning: we’ll replace each sentence letter with a sentence of $\mathrm{PA}$, translate boxes to provability predicates, and translate all instances of $\bot$ to $0=1$.
+The arithmetic soundness of $\mathrm{K4}$ means that when you interpret a $\mathrm{K4}$ theorem, the result is a $\mathrm{PA}$ theorem, regardless of which $\mathrm{PA}$ sentences you replaced the sentence letters with.
 
 Interpreting our $\mathrm{K4}$ formalization of Gödel’s first incompleteness theorem, replacing the sentence letter $\gamma$ with the complicated $\mathrm{PA}$ sentence $G$:
 
