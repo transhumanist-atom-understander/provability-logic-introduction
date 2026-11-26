@@ -1,17 +1,17 @@
 
 
-# Metamathematics in modal logic
+# Mechanizing metamathematics with modal logic
 
-To do metamathematics in modal logic, you take for granted all of Gödel’s great insights:
+I think you can divide the proof of Gödel’s incompleteness theorems into the interesting part and the routine part.
 
-- That when formal proofs are represented as numbers, correctness of a proof can be defined in the language of number theory
+The interesting part is the construction of the Gödel sentence in Peano arithmetic.
+When I say it’s interesting, it’s not that I don’t think it’s tedious.
+But this is where all the conceptual action is.
+The great insights that number theory can express its own rules, and sentences can refer to themselves.
 
-- That a sentence can refer to itself by the trick we now call “diagonalization” or “quining”
+From there, the incompleteness theorems themselves are a logical exercise.
 
-Once you have Gödel’s sentence that says “I am not provable”, the interesting conceptual work is done.
-
-The remaining part, from there to the incompleteness theorems, is rather mechanical.
-In modal logic, these arguments become fully mechanical.
+What I think is charming about modal logic is that you can make the conceptually boring part completely mechanical.
 To me at least, it is appealing to be able to compute from the Gödel sentence to the unprovability of the consistency of arithmetic by a procedure as algorithmic as long division.
 
 ## Provability and possibility
